@@ -6,9 +6,12 @@
   "description": "Proof-of-Alpha: verifiable trading agent demo (paper trading + receipts + Solana audit anchor).",
   "scripts": {
     "demo:paper": "node scripts/paper-demo.mjs",
-    "demo:report": "node scripts/paper-demo.mjs --write-md"
+    "demo:report": "node scripts/paper-demo.mjs --write-md",
+    "anchor:devnet": "node scripts/anchor-devnet.mjs",
+    "verify:devnet": "node scripts/verify-anchor.mjs"
   },
   "dependencies": {
-    "@noble/hashes": "^1.8.0"
+    "@noble/hashes": "^1.8.0",
+    "@solana/web3.js": "^1.98.4"
   }
 }
