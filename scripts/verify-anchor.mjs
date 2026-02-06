@@ -4,6 +4,7 @@ import path from "node:path";
 import { sha256 } from "@noble/hashes/sha256";
 import { bytesToHex } from "@noble/hashes/utils";
 import { Connection, PublicKey } from "@solana/web3.js";
+import bs58 from "bs58";
 
 const args = process.argv.slice(2);
 function getArg(name, def = null) {
@@ -45,8 +46,10 @@ async function main() {
   const bundleHash = bundle.bundleHash;
   if (!bundleHash) throw new Error("bundleHash missing in bundle");
 
-  // re-hash the bundle deterministically (excluding any transient fields if needed)
-  const recalced = `sha256:${hashSha256Hex(canonicalJson(bundle))}`;
+  // Re-hash bundle deterministically.
+  // IMPORTANT: bundleHash is defined as sha256(canonicalJson(bundle WITHOUT bundleHash)).
+  const { bundleHash: _ignored, ...bundleNoHash } = bundle;
+  const recalced = `sha256:${hashSha256Hex(canonicalJson(bundleNoHash))}`;
   if (recalced !== bundleHash) {
     throw new Error(`Bundle hash mismatch: recalced=${recalced} file=${bundleHash}`);
   }
@@ -65,7 +68,8 @@ async function main() {
   for (const ix of ixes) {
     const programId = tx.transaction.message.staticAccountKeys[ix.programIdIndex];
     if (programId.equals(MEMO_PROGRAM_ID)) {
-      memoText = Buffer.from(ix.data).toString("utf8");
+      // ix.data is base58-encoded in getTransaction response
+      memoText = Buffer.from(bs58.decode(ix.data)).toString("utf8");
       break;
     }
   }
