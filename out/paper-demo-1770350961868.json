@@ -1,0 +1,125 @@
+{
+  "bundleVersion": 0,
+  "strategyId": "poa-btcusdt-15m-ema20x50-v0",
+  "runId": "2026-02-06T04:09:21.855Z",
+  "config": {
+    "symbol": "BTCUSDT",
+    "interval": "15m",
+    "limit": 500,
+    "strategy": "ema20x50",
+    "feeBps": 4,
+    "slippageBps": 2,
+    "qtyBtc": 0.01,
+    "initialCash": 10000
+  },
+  "configHash": "sha256:30538b915de4d2b6a67228abfbbddc16b25f7c720554c8dcd2b9d45e79fab8c9",
+  "receipts": [
+    {
+      "ts": "2026-02-02T10:15:00.000Z",
+      "market": "BTCUSDT",
+      "venue": "binance",
+      "signal": {
+        "type": "enter_long",
+        "strength": 1,
+        "features": {
+          "emaFast": 76749.45,
+          "emaSlow": 76729.28
+        }
+      },
+      "order": {
+        "mode": "paper",
+        "side": "buy",
+        "qty": 0.01,
+        "slippageBps": 2,
+        "feeBps": 4
+      },
+      "fill": {
+        "status": "filled",
+        "avgPx": 77609.52,
+        "fee": 0.3104
+      }
+    },
+    {
+      "ts": "2026-02-03T10:45:00.000Z",
+      "market": "BTCUSDT",
+      "venue": "binance",
+      "signal": {
+        "type": "exit_long",
+        "strength": 1,
+        "features": {
+          "emaFast": 78412.28,
+          "emaSlow": 78428.69
+        }
+      },
+      "order": {
+        "mode": "paper",
+        "side": "sell",
+        "qty": 0.01,
+        "slippageBps": 2,
+        "feeBps": 4
+      },
+      "fill": {
+        "status": "filled",
+        "avgPx": 78072.68,
+        "fee": 0.3123
+      }
+    },
+    {
+      "ts": "2026-02-04T06:45:00.000Z",
+      "market": "BTCUSDT",
+      "venue": "binance",
+      "signal": {
+        "type": "enter_long",
+        "strength": 1,
+        "features": {
+          "emaFast": 76327.04,
+          "emaSlow": 76310.57
+        }
+      },
+      "order": {
+        "mode": "paper",
+        "side": "buy",
+        "qty": 0.01,
+        "slippageBps": 2,
+        "feeBps": 4
+      },
+      "fill": {
+        "status": "filled",
+        "avgPx": 76635.52,
+        "fee": 0.3065
+      }
+    },
+    {
+      "ts": "2026-02-04T09:30:00.000Z",
+      "market": "BTCUSDT",
+      "venue": "binance",
+      "signal": {
+        "type": "exit_long",
+        "strength": 1,
+        "features": {
+          "emaFast": 76305.48,
+          "emaSlow": 76312.38
+        }
+      },
+      "order": {
+        "mode": "paper",
+        "side": "sell",
+        "qty": 0.01,
+        "slippageBps": 2,
+        "feeBps": 4
+      },
+      "fill": {
+        "status": "filled",
+        "avgPx": 76033.49,
+        "fee": 0.3041
+      }
+    }
+  ],
+  "metrics": {
+    "trades": 4,
+    "returnPct": -0.026,
+    "maxDrawdownPct": 0.176,
+    "finalEquity": 9997.38
+  },
+  "bundleHash": "sha256:c6b9b51934704b3046851c8b20e9bff9042b52cfc8ef6ca2067eff371dad5237"
+}
