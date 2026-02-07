@@ -60,15 +60,16 @@ async function airdropIfNeeded(conn, pubkey, minSol = 0.5) {
   try {
     const bal = await conn.getBalance(pubkey, "confirmed");
     if (bal >= wantLamports) return { ok: true, bal };
-  } catch {
-    // ignore balance errors on flaky RPCs
+  } catch (e) {
+    // If balance lookup fails (429 / flaky RPC), do NOT attempt airdrop.
+    // We may already be funded; attempting airdrop often hits faucet limits.
+    return { ok: true, bal: null, skippedAirdrop: true, balanceError: String(e?.message || e) };
   }
 
   let lastErr;
   for (let i = 0; i < 6; i++) {
     try {
       const sig = await conn.requestAirdrop(pubkey, 1 * LAMPORTS_PER_SOL);
-      // prefer new confirmTransaction signature
       const bh = await conn.getLatestBlockhash("confirmed");
       await conn.confirmTransaction({ signature: sig, ...bh }, "confirmed");
       const bal2 = await conn.getBalance(pubkey, "confirmed");

@@ -8,7 +8,8 @@
     "demo:paper": "node scripts/paper-demo.mjs",
     "demo:report": "node scripts/paper-demo.mjs --write-md",
     "anchor:devnet": "node scripts/anchor-devnet.mjs",
-    "verify:devnet": "node scripts/verify-anchor.mjs"
+    "verify:devnet": "node scripts/verify-anchor.mjs",
+    "prove:devnet": "node scripts/prove-devnet.mjs"
   },
   "dependencies": {
     "@noble/hashes": "^1.8.0",
