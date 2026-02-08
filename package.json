@@ -9,7 +9,9 @@
     "demo:report": "node scripts/paper-demo.mjs --write-md",
     "anchor:devnet": "node scripts/anchor-devnet.mjs",
     "verify:devnet": "node scripts/verify-anchor.mjs",
-    "prove:devnet": "node scripts/prove-devnet.mjs"
+    "prove:devnet": "node scripts/prove-devnet.mjs",
+    "reveal": "node scripts/reveal.mjs",
+    "verify:reveal": "node scripts/verify-reveal.mjs"
   },
   "dependencies": {
     "@noble/hashes": "^1.8.0",
